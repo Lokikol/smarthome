@@ -96,10 +96,9 @@ class Telegram(SmartPlugin):
         if ITEM_ATTR_MESSAGE in item.conf:
             msg = item.conf[ITEM_ATTR_MESSAGE]
             self.logger.info("send Message: {}".format(msg))
-            for cid in self._chat_ids:
-                self._bot.sendMessage(cid, msg)
+            self._broadcast(msg)
 
-    def _broadcast(msg):
+    def _broadcast(self,msg):
         for cid in self._chat_ids:
             self._bot.sendMessage(cid, msg)
 
